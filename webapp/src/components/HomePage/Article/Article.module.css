@@ -1,0 +1,30 @@
+.main{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    max-width: 35em;
+
+    padding: 1em 1em 1em 1em;
+    margin-bottom: 1.5em;
+    border-radius: 5px;
+
+    background-color: white;
+    /* border: 1px solid #224870; */
+}
+
+.main .text_wrapper{
+    display: flex;
+    flex-direction: column;
+    padding-right: 1em;
+}
+
+.main .title{
+    font-size: 1.25em;
+
+    margin-bottom: 0.75em;
+}
+
+.main .subtitle{
+    font-size: 0.9em;
+}

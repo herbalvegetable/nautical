@@ -1,0 +1,16 @@
+.center{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    padding: 1em 0 0 0;
+}
+
+.center .articles{
+    margin-right: 1em;
+}
+
+.center .sidebar{
+    position: sticky;
+
+}
