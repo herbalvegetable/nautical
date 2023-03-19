@@ -1,0 +1,26 @@
+.center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    max-width: 60em;
+    width: 100%;
+    padding-top: 1em;
+}
+
+.center .title{
+    width: calc(100% - 1em - 2px);
+    padding: 0.5em;
+    font-size: 1.5em;
+
+    border: none;
+    border-bottom: 1px solid #ccced1;
+    /* border-radius: 4px; */
+    margin: 0 0 1em 0;
+
+    /* background-color: inherit; */
+    background-color: white;
+}
+.center .title:focus{
+    outline: none;
+}

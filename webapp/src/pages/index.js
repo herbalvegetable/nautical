@@ -10,32 +10,24 @@ export default function Home() {
 	const [articles, setArticles] = useState([
 		{
 			title: '7 Wonderful Places to Visit in the Dark Web',
+			authorTag: 'ben',
+			articleTag: 'test123',
 		},
 		{
 			title: '3 tips for optimising your Unity games',
+			authorTag: 'ben',
+			articleTag: 'test123',
 		},
 		{
 			title: 'Goodbye LinkedIn. A new era of hiring startups has arrived.',
+			authorTag: 'ben',
+			articleTag: 'test123',
 		},
 		{
 			title: 'Jetbrains Fleet vs VsCode (Will Fleet kill VsCode?). Jetbrains Fleet vs VsCode (Will Fleet kill VsCode?). Jetbrains Fleet vs VsCode (Will Fleet kill VsCode?)',
+			authorTag: 'ben',
+			articleTag: 'test123',
 		},
-		{
-			title: '3 tips for optimising your Unity games',
-		},
-		{
-			title: '3 tips for optimising your Unity games',
-		},
-		{
-			title: '3 tips for optimising your Unity games',
-		},
-		{
-			title: '3 tips for optimising your Unity games',
-		},
-		{
-			title: '3 tips for optimising your Unity games',
-		},
-		
 	]);
 	const [visibleArticles, setVisibleArticles] = useState([]);
 
@@ -49,11 +41,13 @@ export default function Home() {
 				<div className={styles.articles}>
 					{
 						articles.map(article => {
-							const {title, blocks} = article;
+							const {title, blocks, authorTag, articleTag} = article;
 							return (
 								<Article 
 									title={title}
-									subtitle={"Make it work, make it good, make it fast… make it faster? — This past decade, the video game industry has offered us amazing examples of how creative minds can push the boundary and bypass limitations"}/>
+									subtitle={"Make it work, make it good, make it fast… make it faster? — This past decade, the video game industry has offered us amazing examples of how creative minds can push the boundary and bypass limitations"}
+									authorTag={authorTag}
+									articleTag={articleTag}/>
 							)
 						})
 					}

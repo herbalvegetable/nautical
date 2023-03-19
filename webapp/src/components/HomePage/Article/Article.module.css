@@ -11,6 +11,7 @@
 
     background-color: white;
     /* border: 1px solid #224870; */
+    cursor: pointer;
 }
 
 .main .text_wrapper{
