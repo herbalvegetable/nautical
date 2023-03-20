@@ -28,7 +28,8 @@ export default function Article(props){
             <Image 
                 src={coverImg || "/assets/empty-image.png"}
                 width={96}
-                height={96}/>
+                height={96}
+                alt='Cover Image'/>
         </div>
     )
 }
