@@ -28,7 +28,9 @@ export default function Navbar(props) {
                         const { href, title } = l;
 
                         return (
-                            <div className={styles.link_container}>
+                            <div
+                                key={i.toString()} 
+                                className={styles.link_container}>
                                 <Link
                                     key={i.toString()}
                                     className={`${styles.link} ${router.pathname == href ? styles.active : ''}`}
