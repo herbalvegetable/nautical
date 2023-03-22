@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import parse from 'html-react-parser';
 
 import styles from '@/styles/Home.module.css'
 
@@ -7,45 +9,35 @@ import Article from '@/components/HomePage/Article/Article';
 
 export default function Home() {
 
-	const [articles, setArticles] = useState([
-		{
-			title: '7 Wonderful Places to Visit in the Dark Web',
-			authorTag: 'ben',
-			articleTag: 'test123',
-		},
-		{
-			title: '3 tips for optimising your Unity games',
-			authorTag: 'ben',
-			articleTag: 'test123',
-		},
-		{
-			title: 'Goodbye LinkedIn. A new era of hiring startups has arrived.',
-			authorTag: 'ben',
-			articleTag: 'test123',
-		},
-		{
-			title: 'Jetbrains Fleet vs VsCode (Will Fleet kill VsCode?). Jetbrains Fleet vs VsCode (Will Fleet kill VsCode?). Jetbrains Fleet vs VsCode (Will Fleet kill VsCode?)',
-			authorTag: 'ben',
-			articleTag: 'test123',
-		},
-	]);
+	const [articles, setArticles] = useState([]);
 	const [visibleArticles, setVisibleArticles] = useState([]);
 
 	useEffect(() => {
-
+		axios.get(`http://localhost:5000/article`)
+			.then(({data}) => {
+				setArticles(data);
+			})
+			.catch(err => console.log(err));
 	}, []);
+
+	const htmlToText = str => {
+		return str.replace(/<\/?[^>]+(>|$)/g, " ");
+	}
 
 	return (
 		<PageContainer>
 			<div className={styles.center}>
 				<div className={styles.articles}>
 					{
-						articles.map(article => {
-							const {title, blocks, authorTag, articleTag} = article;
+						articles.map((article, i) => {
+							const {title, text, imgBase64, authorTag, articleTag} = article;
 							return (
 								<Article 
+									key={i.toString()}
 									title={title}
-									subtitle={"Make it work, make it good, make it fast… make it faster? — This past decade, the video game industry has offered us amazing examples of how creative minds can push the boundary and bypass limitations"}
+									subtitle={htmlToText(text)}
+									// subtitle='hello world'
+									imgBase64={imgBase64}
 									authorTag={authorTag}
 									articleTag={articleTag}/>
 							)

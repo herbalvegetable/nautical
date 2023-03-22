@@ -20,7 +20,7 @@ module.exports = app => { //operations
         try {
 
             console.log(req.body);
-            const { title, text, imgBase64 } = req.body;
+            const { title, text, imgData: imgBase64 } = req.body;
 
             const article = new Article({ title, text, imgBase64 });
 

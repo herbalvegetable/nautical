@@ -3,6 +3,7 @@ import parse from 'html-react-parser';
 import dynamic from 'next/dynamic';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import FileBase64 from 'react-file-base64';
 
 import styles from '@/styles/Publish.module.css'
 
@@ -27,9 +28,9 @@ export default function Publish() {
 
     const handlePublish = e => {
         e.preventDefault();
-        if(!(title && text)) return;
+        if (!(title && text)) return;
 
-        const articleData = { title, text };
+        const articleData = { title, text, imgData };
 
         axios.post(`http://localhost:5000/article/`, articleData)
             .then(res => {
@@ -68,6 +69,28 @@ export default function Publish() {
                         setData={setText} />
                 </div>
                 <div className={styles.sidebar}>
+
+                    <input
+                        type='file'
+                        accept="image/png, image/jpeg"
+                        onChange={e => {
+                            const file = e.target.files[0];
+                            const reader = new FileReader();
+
+                            reader.onload = () => {
+                                console.log(reader.result);
+                                setImgData(reader.result);
+                            }
+                            reader.onerror = err => console.log(err);
+                            
+                            if(file){
+                                reader.readAsDataURL(file);
+                            }
+                        }}/>
+
+                    {/* <FileBase64 
+                        onDone={files => console.log(files)}/> */}
+
                     <button
                         className={styles.preview_btn}
                         onClick={handlePreview}>
